@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_INTF" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOINTERF>
+    <CLSNAME>ZIF_BTOCS_LIBTRL_CONNECTOR</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>B-Tocs Addon LibreTranslate Interface</DESCRIPT>
+    <EXPOSURE>2</EXPOSURE>
+    <STATE>1</STATE>
+    <UNICODE>X</UNICODE>
+   </VSEOINTERF>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>API_LANGUAGES</CMPNAME>
+     <SCONAME>RO_RESPONSE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>B-Tocs Response Interface</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>API_TRANSLATE</CMPNAME>
+     <SCONAME>IS_PARAMS</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>api parameters for /translate</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>API_TRANSLATE</CMPNAME>
+     <SCONAME>RO_RESPONSE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>B-Tocs Response Interface</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>NEW_RESPONSE</CMPNAME>
+     <SCONAME>RO_RESPONSE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>B-Tocs Addon LibreTranslate Interface</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>
