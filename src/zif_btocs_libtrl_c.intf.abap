@@ -1,16 +1,17 @@
-INTERFACE zif_btocs_libtrl_c
-  PUBLIC .
+interface ZIF_BTOCS_LIBTRL_C
+  public .
 
-  CONSTANTS version     TYPE string VALUE 'V20240111' ##NO_TEXT.
-  CONSTANTS release     TYPE string VALUE '0.1.0' ##NO_TEXT.
-  CONSTANTS homepage    TYPE string VALUE 'https://b-tocs.org' ##NO_TEXT.
-  CONSTANTS repository  TYPE string VALUE 'https://github.com/b-tocs/abap_btocs_libtrl' ##NO_TEXT.
-  CONSTANTS author      TYPE string VALUE 'mdjoerg@b-tocs.org' ##NO_TEXT.
-  CONSTANTS depending   TYPE string VALUE 'https://github.com/b-tocs/abap_btocs_core' ##NO_TEXT.
 
-  CONSTANTS: BEGIN OF api_path,
+  constants VERSION type STRING value 'V20240111' ##NO_TEXT.
+  constants RELEASE type STRING value '0.1.1' ##NO_TEXT.
+  constants HOMEPAGE type STRING value 'https://b-tocs.org' ##NO_TEXT.
+  constants REPOSITORY type STRING value 'https://github.com/b-tocs/abap_btocs_libtrl' ##NO_TEXT.
+  constants AUTHOR type STRING value 'mdjoerg@b-tocs.org' ##NO_TEXT.
+  constants DEPENDING type STRING value 'https://github.com/b-tocs/abap_btocs_core' ##NO_TEXT.
+  constants:
+    BEGIN OF api_path,
                translate TYPE string VALUE '/translate',
                languages TYPE string VALUE '/languages',
-             END OF api_path.
-
-ENDINTERFACE.
+               detect    TYPE string VALUE '/detect',
+             END OF api_path .
+endinterface.

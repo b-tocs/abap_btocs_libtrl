@@ -2,6 +2,7 @@
 *& Report ZBTOCS_LIBTRL_GUI_RWS_DEMO
 *&---------------------------------------------------------------------*
 *& demo how to use the LibreTranslate Connector
+*& Repository & Docs: https://github.com/b-tocs/abap_btocs_libtrl
 *&---------------------------------------------------------------------*
 REPORT zbtocs_libtrl_gui_rws_demo.
 
@@ -10,7 +11,7 @@ PARAMETERS: p_rfc TYPE rfcdest OBLIGATORY.
 PARAMETERS: p_prf TYPE zbtocs_rws_profile.
 SELECTION-SCREEN: ULINE.
 PARAMETERS: p_txt TYPE string LOWER CASE.
-PARAMETERS: p_fmt TYPE string LOWER CASE DEFAULT 'text'.
+PARAMETERS: p_fmt TYPE string LOWER CASE DEFAULT 'Open Source ist eine coole Sache'.
 PARAMETERS: p_src TYPE string LOWER CASE DEFAULT 'de'.
 PARAMETERS: p_trg TYPE string LOWER CASE DEFAULT 'en'.
 PARAMETERS: p_key TYPE string LOWER CASE.
@@ -49,8 +50,13 @@ START-OF-SELECTION.
             format  = p_fmt
             api_key = p_key
         ) ).
-      when p_ogl. " languages
+      WHEN p_ogl. " languages
         lo_response = lo_connector->api_languages( ).
+      WHEN p_otd.
+        lo_response = lo_connector->api_detect( VALUE zbtocs_libtrl_s_detect_par(
+            q       = p_txt
+            api_key = p_key
+        ) ).
       WHEN OTHERS.
         lo_logger->error( |invalid option or not implemented yet| ).
     ENDCASE.

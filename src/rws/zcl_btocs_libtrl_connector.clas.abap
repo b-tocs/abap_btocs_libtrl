@@ -120,4 +120,54 @@ CLASS ZCL_BTOCS_LIBTRL_CONNECTOR IMPLEMENTATION.
     ro_response ?= zcl_btocs_factory=>create_instance( 'ZIF_BTOCS_LIBTRL_RESPONSE' ).
     ro_response->get_main( )->set_logger( get_logger( ) ).
   ENDMETHOD.
+
+
+  METHOD zif_btocs_libtrl_connector~api_detect.
+
+* ========== init
+    DATA(ls_params) = is_params.
+    ro_response     = zcl_btocs_factory=>create_web_service_response( ).
+    ro_response->set_logger( get_logger( ) ).
+
+
+* =========== checks and preparations
+    IF zif_btocs_libtrl_connector~is_initialized( ) EQ abap_false.
+      ro_response->set_reason( |connector is not initialized| ).
+      RETURN.
+    ENDIF.
+
+    IF ls_params-q IS INITIAL.
+      ro_response->set_reason( |text to translate is missing| ).
+      RETURN.
+    ENDIF.
+
+* =========== get client and prepare call
+    DATA(lv_api_key) = COND #( WHEN ls_params-api_key IS NOT INITIAL
+                               THEN ls_params-api_key
+                               ELSE zif_btocs_libtrl_connector~get_client( )->get_api_key( ) ).
+
+
+* =========== fill form based params
+    DATA(lo_request) = zif_btocs_libtrl_connector~new_request( ). " from current client
+    lo_request->set_form_type_urlencoded( ).
+
+    lo_request->add_form_field(
+      iv_name = 'q'
+      iv_value = ls_params-q
+    ).
+
+    IF lv_api_key IS NOT INITIAL.
+      lo_request->add_form_field(
+        iv_name = 'api_key'
+        iv_value = lv_api_key
+      ).
+    ENDIF.
+
+* ============ execute via api path
+    DATA(lo_response) = zif_btocs_libtrl_connector~new_response( ).
+    ro_response ?= zif_btocs_libtrl_connector~execute(
+     iv_api_path = zif_btocs_libtrl_c=>api_path-detect
+     io_response = lo_response
+    ).
+  ENDMETHOD.
 ENDCLASS.

@@ -24,15 +24,23 @@ interface ZIF_BTOCS_LIBTRL_CONNECTOR
   aliases SET_LOGGER
     for ZIF_BTOCS_RWS_CONNECTOR~SET_LOGGER .
 
+  methods NEW_RESPONSE
+    returning
+      value(RO_RESPONSE) type ref to ZIF_BTOCS_LIBTRL_RESPONSE .
+
   methods API_TRANSLATE
     importing
       !IS_PARAMS type ZBTOCS_LIBTRL_S_TRANSLATE_PAR
     returning
       value(RO_RESPONSE) type ref to ZIF_BTOCS_RWS_RESPONSE .
+
+  methods API_DETECT
+    importing
+      !IS_PARAMS type ZBTOCS_LIBTRL_S_DETECT_PAR
+    returning
+      value(RO_RESPONSE) type ref to ZIF_BTOCS_RWS_RESPONSE .
+
   methods API_LANGUAGES
     returning
       value(RO_RESPONSE) type ref to ZIF_BTOCS_RWS_RESPONSE .
-  methods NEW_RESPONSE
-    returning
-      value(RO_RESPONSE) type ref to ZIF_BTOCS_LIBTRL_RESPONSE .
 endinterface.
