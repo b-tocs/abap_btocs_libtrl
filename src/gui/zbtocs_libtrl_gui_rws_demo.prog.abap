@@ -6,11 +6,15 @@
 *&---------------------------------------------------------------------*
 REPORT zbtocs_libtrl_gui_rws_demo.
 
+"https://answers.sap.com/questions/7174658/index.html
+
 * ------- interface
 PARAMETERS: p_rfc TYPE rfcdest OBLIGATORY.
 PARAMETERS: p_prf TYPE zbtocs_rws_profile.
 SELECTION-SCREEN: ULINE.
 PARAMETERS: p_txt TYPE string LOWER CASE.
+PARAMETERS: p_fil TYPE zbtocs_filename LOWER CASE.
+SELECTION-SCREEN: ULINE.
 PARAMETERS: p_fmt TYPE string LOWER CASE DEFAULT 'Open Source ist eine coole Sache'.
 PARAMETERS: p_src TYPE string LOWER CASE DEFAULT 'de'.
 PARAMETERS: p_trg TYPE string LOWER CASE DEFAULT 'en'.
@@ -26,9 +30,21 @@ PARAMETERS: p_trace AS CHECKBOX TYPE zbtocs_flag_display_trace DEFAULT 'X'.
 
 
 INITIALIZATION.
+
+  DATA(lo_gui_utils) = zcl_btocs_factory=>create_gui_util( ).
+  DATA(lo_logger)    = lo_gui_utils->get_logger( ).
+
 * --------- init client
   DATA(lo_connector) = zcl_btocs_libtrl_connector=>create( ).
-  DATA(lo_logger)    = lo_connector->get_logger( ).
+  lo_connector->set_logger( lo_logger ).
+
+
+* --------------------- F4 Help
+AT SELECTION-SCREEN ON VALUE-REQUEST FOR p_fil.
+  lo_gui_utils->f4_get_filename_open(
+    CHANGING
+      cv_filename     = p_fil
+  ).
 
 
 START-OF-SELECTION.
@@ -49,6 +65,13 @@ START-OF-SELECTION.
             target  = p_trg
             format  = p_fmt
             api_key = p_key
+        ) ).
+      WHEN p_otf. " translate file
+        lo_response = lo_connector->api_translate_file( is_params =  VALUE zbtocs_libtrl_s_transfile_par(
+            filename  = p_fil
+            source    = p_src
+            target    = p_trg
+            api_key   = p_key
         ) ).
       WHEN p_ogl. " languages
         lo_response = lo_connector->api_languages( ).

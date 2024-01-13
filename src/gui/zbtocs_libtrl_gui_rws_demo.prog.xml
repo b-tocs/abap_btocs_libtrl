@@ -18,6 +18,13 @@
     </item>
     <item>
      <ID>S</ID>
+     <KEY>P_FIL</KEY>
+     <ENTRY>.</ENTRY>
+     <LENGTH>9</LENGTH>
+     <SPLIT>D</SPLIT>
+    </item>
+    <item>
+     <ID>S</ID>
      <KEY>P_FMT</KEY>
      <ENTRY>format (text|html)</ENTRY>
      <LENGTH>26</LENGTH>

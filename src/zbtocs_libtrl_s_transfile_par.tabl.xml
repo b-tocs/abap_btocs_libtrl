@@ -3,21 +3,37 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <DD02V>
-    <TABNAME>ZBTOCS_LIBTRL_S_TRANSLATE_PAR</TABNAME>
+    <TABNAME>ZBTOCS_LIBTRL_S_TRANSFILE_PAR</TABNAME>
     <DDLANGUAGE>E</DDLANGUAGE>
     <TABCLASS>INTTAB</TABCLASS>
-    <DDTEXT>api parameters for /translate</DDTEXT>
+    <DDTEXT>api parameters for /translate_file</DDTEXT>
     <EXCLASS>1</EXCLASS>
    </DD02V>
    <DD03P_TABLE>
     <DD03P>
-     <FIELDNAME>Q</FIELDNAME>
+     <FIELDNAME>FILENAME</FIELDNAME>
      <ADMINFIELD>0</ADMINFIELD>
      <INTTYPE>g</INTTYPE>
      <INTLEN>000008</INTLEN>
      <DATATYPE>STRG</DATATYPE>
      <MASK>  STRG</MASK>
      <DDTEXT>text/file to translate</DDTEXT>
+    </DD03P>
+    <DD03P>
+     <FIELDNAME>BINARY</FIELDNAME>
+     <ADMINFIELD>0</ADMINFIELD>
+     <INTTYPE>y</INTTYPE>
+     <INTLEN>000008</INTLEN>
+     <DATATYPE>RSTR</DATATYPE>
+     <MASK>  RSTR</MASK>
+    </DD03P>
+    <DD03P>
+     <FIELDNAME>MIMETYPE</FIELDNAME>
+     <ADMINFIELD>0</ADMINFIELD>
+     <INTTYPE>g</INTTYPE>
+     <INTLEN>000008</INTLEN>
+     <DATATYPE>STRG</DATATYPE>
+     <MASK>  STRG</MASK>
     </DD03P>
     <DD03P>
      <FIELDNAME>SOURCE</FIELDNAME>
@@ -36,15 +52,6 @@
      <DATATYPE>STRG</DATATYPE>
      <MASK>  STRG</MASK>
      <DDTEXT>target language</DDTEXT>
-    </DD03P>
-    <DD03P>
-     <FIELDNAME>FORMAT</FIELDNAME>
-     <ADMINFIELD>0</ADMINFIELD>
-     <INTTYPE>g</INTTYPE>
-     <INTLEN>000008</INTLEN>
-     <DATATYPE>STRG</DATATYPE>
-     <MASK>  STRG</MASK>
-     <DDTEXT>text format (text|html)</DDTEXT>
     </DD03P>
     <DD03P>
      <FIELDNAME>API_KEY</FIELDNAME>
