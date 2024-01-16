@@ -96,7 +96,7 @@ CLASS ZCL_BTOCS_LIBTRL_CONNECTOR IMPLEMENTATION.
 
     lo_request->add_form_field(
       iv_name = 'format'
-      iv_value = ls_params-format
+      iv_value = ls_params-input_format
     ).
 
     IF lv_api_key IS NOT INITIAL.

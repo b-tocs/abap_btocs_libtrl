@@ -75,11 +75,11 @@ START-OF-SELECTION.
         lo_response = lo_connector->api_translate(
           EXPORTING
             is_params = VALUE zbtocs_libtrl_s_translate_par(
-              q       = lv_txt
-              source  = p_src
-              target  = p_trg
-              format  = p_fmt
-              api_key = p_key
+              q             = lv_txt
+              source        = p_src
+              target        = p_trg
+              input_format  = p_fmt
+              api_key       = p_key
           )
           iv_parse = abap_true
           IMPORTING
