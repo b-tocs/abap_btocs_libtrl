@@ -113,6 +113,17 @@ CLASS ZCL_BTOCS_LIBTRL_CONNECTOR IMPLEMENTATION.
      io_response = lo_response
     ).
 
+* ----- parse?
+    IF ro_response IS NOT INITIAL
+      AND ro_response->is_json_object( ) EQ abap_true
+      AND iv_parse EQ abap_true.
+      DATA(lo_parsed) = ro_response->get_values_from_parsed_json( ).
+      DATA(lo_answer)   = lo_parsed->get_structure_value( ).
+      IF lo_answer IS NOT INITIAL.
+        ev_translated_text = lo_answer->get_string( zif_btocs_libtrl_connector~c_json_key-translated_text ).
+      ENDIF.
+    ENDIF.
+
   ENDMETHOD.
 
 
@@ -211,18 +222,10 @@ CLASS ZCL_BTOCS_LIBTRL_CONNECTOR IMPLEMENTATION.
 
 *   mimetype
       IF ls_params-mimetype IS INITIAL.
-        ls_params-mimetype = lo_gui_util->get_mimetype_from_filename( ls_params-filename ).
+        ls_params-mimetype = lo_conv_util->get_filename_mimetype( ls_params-filename ).
       ENDIF.
 
     ENDIF.
-
-** ----- final check
-*    DATA(lv_base64) = lo_conv_util->convert_xstring_to_base64(
-*      iv_binary   = ls_params-binary
-*      iv_filename = ls_params-filename
-*      iv_mimetype = ls_params-mimetype
-*    ).
-
 
 * =========== checks and preparations
     IF zif_btocs_libtrl_connector~is_initialized( ) EQ abap_false.
@@ -289,6 +292,56 @@ CLASS ZCL_BTOCS_LIBTRL_CONNECTOR IMPLEMENTATION.
      io_response = lo_response
     ).
 
+* ----- parse?
+    IF ro_response IS NOT INITIAL
+      AND ro_response->is_json_object( ) EQ abap_true
+      AND iv_parse EQ abap_true.
+      DATA(lo_parsed) = ro_response->get_values_from_parsed_json( ).
+      DATA(lo_answer)   = lo_parsed->get_structure_value( ).
+      IF lo_answer IS NOT INITIAL.
+        ev_file_url = lo_answer->get_string( zif_btocs_libtrl_connector~c_json_key-translated_file_url ).
+
+* ----- download file?
+        IF ev_file_url IS NOT INITIAL
+          AND iv_download EQ abap_true.
+          es_file_data = zif_btocs_libtrl_connector~download_file( ev_file_url ).
+          IF es_file_data IS NOT INITIAL.
+            get_logger( )->debug( |file downloaded| ).
+          ELSE.
+            get_logger( )->error( |error while downloading file| ).
+          ENDIF.
+        ENDIF.
+      ENDIF.
+    ENDIF.
+
+  ENDMETHOD.
+
+
+  METHOD zif_btocs_libtrl_connector~download_file.
+
+* ---------- execute get request
+    DATA(lo_response_in) = zif_btocs_libtrl_connector~new_response( ).
+    DATA(lo_response_out) = zif_btocs_rws_connector~execute_get(
+        iv_url      = iv_url
+        io_response = lo_response_in
+    ).
+
+
+* ----------- process get response
+    IF lo_response_out->is_http_request_success( )
+      AND lo_response_out->is_binary( ) EQ abap_true.
+      es_file_data = lo_response_out->get_binary_as_file(
+          iv_filename        = iv_url
+          iv_short_filename  = abap_true
+          iv_detect_mimetype = abap_true
+      ).
+    ENDIF.
+
+
+* ------------ check result
+    IF es_file_data IS INITIAL.
+      get_logger( )->error( |no binary response or invalid data| ).
+    ENDIF.
 
   ENDMETHOD.
 ENDCLASS.
