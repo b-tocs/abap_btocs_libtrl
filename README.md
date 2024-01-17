@@ -6,10 +6,6 @@ This plugin is based on the [B-Tocs ABAP SDK](https://github.com/b-tocs/abap_bto
 
 The plugin is free at your own risk. 
 
-# Installation & Configuration
-
-The installed [B-Tocs ABAP SDK](https://github.com/b-tocs/abap_btocs_core) is required. Install the plugin it with [abapGit](https://abapgit.org). 
-
 
 ## Architecture
 
@@ -50,3 +46,14 @@ flowchart LR
     plugin-->service5    
 
 ```
+
+## Installation & Configuration
+
+1. The installed [B-Tocs ABAP SDK](https://github.com/b-tocs/abap_btocs_core) is required. 
+2. Install the plugin it with [abapGit](https://abapgit.org). 
+3. Configure SM59 RFC Destination to your remote service
+4. Test connection
+5. Execute program ZBTOCS_LIBTRL_GUI_RWS_DEMO for a demo
+6. Use it in own scenarios
+
+
