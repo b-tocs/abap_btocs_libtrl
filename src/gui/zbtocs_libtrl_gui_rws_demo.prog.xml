@@ -18,7 +18,7 @@
     </item>
     <item>
      <ID>S</ID>
-     <KEY>P_CLIPB</KEY>
+     <KEY>P_CLP</KEY>
      <ENTRY>.</ENTRY>
      <LENGTH>9</LENGTH>
      <SPLIT>D</SPLIT>
@@ -42,6 +42,13 @@
      <KEY>P_FMT</KEY>
      <ENTRY>format (text|html)</ENTRY>
      <LENGTH>26</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_GET</KEY>
+     <ENTRY>.</ENTRY>
+     <LENGTH>9</LENGTH>
+     <SPLIT>D</SPLIT>
     </item>
     <item>
      <ID>S</ID>
@@ -121,6 +128,13 @@
      <KEY>P_TXT</KEY>
      <ENTRY>.</ENTRY>
      <LENGTH>25</LENGTH>
+     <SPLIT>D</SPLIT>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_URL</KEY>
+     <ENTRY>.</ENTRY>
+     <LENGTH>9</LENGTH>
      <SPLIT>D</SPLIT>
     </item>
    </TPOOL>
