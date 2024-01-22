@@ -2,8 +2,8 @@ interface ZIF_BTOCS_LIBTRL_C
   public .
 
 
-  constants VERSION type STRING value 'V20240118' ##NO_TEXT.
-  constants RELEASE type STRING value '0.3.0' ##NO_TEXT.
+  constants VERSION type STRING value 'V20240122' ##NO_TEXT.
+  constants RELEASE type STRING value '0.3.1' ##NO_TEXT.
   constants HOMEPAGE type STRING value 'https://b-tocs.org' ##NO_TEXT.
   constants REPOSITORY type STRING value 'https://github.com/b-tocs/abap_btocs_libtrl' ##NO_TEXT.
   constants AUTHOR type STRING value 'mdjoerg@b-tocs.org' ##NO_TEXT.
