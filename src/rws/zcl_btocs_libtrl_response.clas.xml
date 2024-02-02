@@ -5,7 +5,7 @@
    <VSEOCLASS>
     <CLSNAME>ZCL_BTOCS_LIBTRL_RESPONSE</CLSNAME>
     <LANGU>E</LANGU>
-    <DESCRIPT>B-Tocs Addon LibreTranslate - Response</DESCRIPT>
+    <DESCRIPT>B-Tocs Plugin LibreTranslate - Response</DESCRIPT>
     <STATE>1</STATE>
     <CLSCCINCL>X</CLSCCINCL>
     <FIXPT>X</FIXPT>
