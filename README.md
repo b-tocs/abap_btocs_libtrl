@@ -1,4 +1,4 @@
-# B-Tocs ABAP Addon LibreTranslate
+# B-Tocs ABAP Plugin LibreTranslate
 ![Bride To Other Cool Stuff](res/btocs_logo.gif)
 
 ## Summary
