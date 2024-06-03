@@ -17,8 +17,8 @@ PARAMETERS: p_url TYPE zbtocs_url      LOWER CASE.                           " i
 PARAMETERS: p_clp AS CHECKBOX TYPE zbtocs_flag_clipboard_input  DEFAULT ' '. " get the input from clipboard
 PARAMETERS: p_get AS CHECKBOX TYPE zbtocs_flag_get_from_url     DEFAULT ' '. " get the input from url with get request
 SELECTION-SCREEN: ULINE.
-PARAMETERS: p_src TYPE zbtocs_language_target DEFAULT 'de'. " source language
-PARAMETERS: p_trg TYPE zbtocs_language_target DEFAULT 'en'. " target language
+PARAMETERS: p_src TYPE zbtocs_language_source DEFAULT 'en'. " source language
+PARAMETERS: p_trg TYPE zbtocs_language_target DEFAULT 'de'. " target language
 SELECTION-SCREEN: SKIP.
 PARAMETERS: p_fmt TYPE string LOWER CASE DEFAULT 'text'.    " format for libretranslate [text|html|
 SELECTION-SCREEN: ULINE.
